@@ -13,6 +13,7 @@ messages = ["message1", "message2", "message3", "message4"] #list of spam messag
 driver.get("https://www.instagram.com/direct/inbox/")
 WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.NAME, "username"))).click()
 
+#logging into account
 username_login = driver.find_element_by_name("username")
 password_login = driver.find_element_by_name("password")
 username_login.send_keys("myUsername") #login username

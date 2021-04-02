@@ -8,16 +8,15 @@ from random import randint
 
 PATH = "C:\Program Files (x86)\chromedriver.exe"
 driver = webdriver.Chrome(PATH)
-messages = ["message1", "message2", "message3", "message4"] #list of spam messages
+messages = ["orange", "strawberry", "eggplant", "mango"] #list of spam messages
 
 driver.get("https://www.instagram.com/direct/inbox/")
 WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.NAME, "username"))).click()
 
-#logging into account
 username_login = driver.find_element_by_name("username")
 password_login = driver.find_element_by_name("password")
-username_login.send_keys("myUsername") #login username
-password_login.send_keys("myPassword", Keys.RETURN) #login password
+username_login.send_keys("cjudelopez") #login username
+password_login.send_keys("spambotgobrr420", Keys.RETURN) #login password
 
 #gets rid of pop ups
 WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, "//button[contains(text(),'Not Now')]"))).click()
@@ -31,9 +30,9 @@ newMessage.click()
 #directs who the message is to
 WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.XPATH, "//body/div[5]/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]/input[1]"))).click()
 receiver = driver.find_element_by_xpath("//body/div[5]/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]/input[1]")
-receiver.send_keys("messageReceiver") #receiver of the message
+receiver.send_keys("arizona.bucket.hat") #receiver of the message
 time.sleep(1)
-receivers.send_keys(Keys.TAB, Keys.RETURN)
+receiver.send_keys(Keys.TAB, Keys.RETURN)
 next = driver.find_element_by_xpath("//div[contains(text(),'Next')]")
 next.click()
 
@@ -42,4 +41,4 @@ WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.XPATH, "//bod
 message = driver.find_element_by_xpath("//body/div[@id='react-root']/section[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[2]/div[1]/div[2]/div[1]/div[1]/div[2]/textarea[1]")
 for i in range(10):
 	message.send_keys(messages[randint(0, len(messages)-1)], Keys.RETURN)	
-	#time.sleep(2) #if you want a delay between messages
+	#time.sleep(2)
